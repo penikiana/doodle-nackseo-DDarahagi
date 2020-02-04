@@ -6,9 +6,6 @@
 
 #include <iostream>
 #include <string>
-
----------------------------------------------
-
 int main()
 {
 	std::cout << "잘있거라 세상이여" << 10 << 'c' << std::endl;
@@ -16,6 +13,7 @@ int main()
 
 ---------------------------------------------
 
+#include <iostream>
 using namespace std;
 
 int main()
@@ -25,6 +23,7 @@ int main()
 
 ---------------------------------------------
 
+#include <iostream>
 using namespace std;
 
 int main()
@@ -37,6 +36,7 @@ int main()
 
 ---------------------------------------------
 
+#include <iostream>
 using namespace std;
 
 int main()
@@ -49,6 +49,7 @@ int main()
 
 ---------------------------------------------
 
+#include <iostream>
 using namespace std;
 
 int main()
@@ -74,6 +75,7 @@ int main()
 
 ---------------------------------------------
 
+#include <iostream>
 using namespace std;
 
 int main()
@@ -89,6 +91,7 @@ int main()
 
 //범위기반 for문
 
+#include <iostream>
 using namespace std;
 
 int main()
@@ -112,6 +115,7 @@ int main()
 
 //c++포인터
 
+#include <iostream>
 using namespace std;
 
 int main()
@@ -211,6 +215,7 @@ int main()
 
 ---------------------------------------------
 
+#include <iostream>
 using namespace std;
 
 int inventory[64] = { 0 };
@@ -240,5 +245,472 @@ int main()
 
 
 <52강>
+
+
+------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+
+/*
+using namespace std;
+int main()
+{
+	string name;
+	int score;
+
+	cout << "이름입력:";
+	cin >> name;
+
+	cout << "점수 입력: ";
+	cin >> score;
+
+	cout << "당신의 이름은 " << name << "당신의 점수는 " << score <<"점"<< endl;
+} 
+
+------------------------------------------------------------------
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int arr[2][3] = { {1,2,3,},{4,5,6,} };
+	{
+		for (int(&ln)[3] : arr)
+		{
+			for (int &col : ln)
+			{
+				cout << col << ' ';
+			}
+			cout << endl;
+		}
+	}
+
+	for (int(*ln)[3] = arr; ln < arr + 2; ln++)
+	{
+		for (int*c = *ln; c < *ln + 3; c++)
+		{
+			cout << *c << ' ';
+		}
+		cout << endl;
+	}
+}
+
+------------------------------------------------------------------
+
+#include <iostream>
+void drawRectangle(int l, int r, int t, int b)
+{
+
+}
+void drawRectangle(int w, int h, int x = 0, int y = 0)
+{
+
+}
+
+int main()
+{
+	drawRectangle(0, 0, 0, 0);
+}
+//초기화하려면 오른쪽부터, 변수의 개수가 같으면 오버로딩이 안됨.
+
+------------------------------------------------------------------
+
+
+
+<53강>
+
+
+
+------------------------------------------------------------------
+#include <iostream>
+
+using namespace std;
+
+int n;
+void set();
+namespace penikiana
+{
+	int n;
+	void set();
+}
+namespace google
+{
+	int n;
+	void set();
+}
+
+int main()
+{
+	::set();
+	penikiana::set();
+	google::set();
+
+	cout << ::n << endl;
+	cout << penikiana::n << endl;
+	cout << google::n << endl;
+}
+
+void set()
+{
+	n = 10;
+}
+namespace penikiana
+{
+	void set()
+	{
+		n = 20;
+	}
+}
+namespace google
+{
+	void set()
+	{
+		n = 30;
+	}
+}
+
+//소속을 밝히지 않아도 특정 네임스페이스에 속한 변수나 함수를 사용가능.
+//근데 ::만 쓰면 소속되지 않은 n이 호출된다.
+//다른 네임스페이스의 소속이라고 밝히면 함수는 호출안되고 n이 호출된다.
+
+
+------------------------------------------------------------------
+
+
+#include <iostream>
+using namespace std;
+
+int n;
+void set()
+{
+	n = 10;
+}
+namespace penikiana
+{
+	int n;
+	void set()
+	{
+		n = 20;
+	}
+	namespace google
+	{
+		void set()
+		{
+			n = 30;
+		}
+		int n;
+	}
+	
+}
+
+int main()
+{
+	::set();
+	penikiana::set();
+	penikiana::google::set();
+
+	cout << ::n << endl;
+	cout << penikiana::n << endl;
+	cout << penikiana::google::n << endl;
+}
+//위의 경우에 30이라는 값은 네임스페이스 안에 있는 다른 n(penikiana의 n)으로 인식.
+//여기서 penikiana의 n도 밑으로 내리면 void의 n만 30이 됨.
+//근데 또 여기서 맨 위의 방법대로 아래로 빼내서 선언하면 제대로 값이 들어감.
+//컴파일러가 위에서 아래로 데이터를 인식하기 때문
+
+
+
+------------------------------------------------------------------
+
+
+<54강>
+
+
+#include <iostream>
+
+using namespace std;
+
+struct tv
+{
+private:
+	bool poweron;
+	int channel;
+	int volume;
+
+public:
+	void on()
+	{
+		poweron = true;
+		cout << "TV가 켜집니다." << endl;
+	}
+
+	void off()
+	{
+		poweron = false;
+		cout << "TV가 꺼져있습니다" << endl;
+	}
+
+	void setchannel(int ch)
+	{
+		if (ch >= 1 && ch <= 100)
+		{
+			channel = ch;
+			cout << "현재 채널" << ch << endl;
+		}
+	}
+
+	void setvolume(int vol)
+	{
+		if (vol >= 0 && vol <= 100)
+		{
+			volume = vol;
+			cout << "현재 볼륨크기" << vol << endl;
+		}
+	}
+};
+
+
+int main()
+{
+	tv lg;
+	lg.on();
+	lg.setchannel(10);
+	lg.setvolume(50);
+}
+
+//지시자는 접근가능성을 조절하기 위해 탄생함.
+//기본적으로 struct는 public 속성, class는 private 속성.
+
+
+------------------------------------------------------------------
+
+
+<55강>
+
+
+#include <iostream>
+
+
+using namespace std;
+
+class myclass
+{
+public:
+	void printthis()
+	{
+		cout << "나의 주소는" << this << endl;
+	}
+};
+
+int main()
+{
+	myclass a, b;
+
+	cout << "a의 주소는" << &a << endl;
+	cout << "b의 주소는" << &b << endl;
+
+	a.printthis();
+	b.printthis();
+}
+
+
+------------------------------------------------------------------
+
+
+<56강>
+
+
+#include <iostream>
+
+using namespace std;
+
+class myclass {
+
+public:
+	myclass()//생성자
+	{
+		cout << "생성자가 나타났다!" << endl;
+	}
+	~myclass()//소멸자
+	{
+		cout << "소멸자가 나타났다!" << endl;
+	}
+};
+
+myclass globalobj;
+
+void testlocalobj()
+{
+	cout << "테스트로컬오브젝트함수 시작" << endl;
+	myclass localobj;
+	cout << "테스트로컬오브젝트함수 끝" << endl;
+}
+
+int main()
+{
+	cout << "main시작!" << endl;
+	testlocalobj();
+	cout << "main 끝!" << endl;
+}
+
+
+------------------------------------------------------------------
+
+
+#include <iostream>
+using namespace std;
+
+class complex
+{
+public:
+	complex()
+	{
+		real = 0;
+		imag = 0;
+	}
+
+	complex(double real_ , double imag_)
+	{
+		real = real_;
+		imag = imag_;
+	}
+
+	double getreal()
+	{
+		return real;
+	}
+	void setreal(double real_)
+	{
+		real = real_;
+	}
+	double getimag()
+	{
+		return imag;
+	}
+	void setimag(double imag_)
+	{
+		imag = imag_;
+	}
+private:
+	double real;
+	double imag;
+};
+
+int main()
+{
+	complex c1;
+	complex c2 = complex(2, 3);
+	complex c3(2, 3);
+
+	cout << "c1= " << c1.getreal() << "," << c1.getimag() << endl;
+	cout << "c2= " << c2.getreal() << "," << c2.getimag() << endl;
+	cout << "c3= " << c3.getreal() << "," << c3.getimag() << endl;
+
+}
+//생성자 호출은 중괄호로 초기화도 가능.
+
+------------------------------------------------------------------
+
+ 
+ 
+ <57강>
+ 
+ 
+ #include <iostream>
+
+using namespace std;
+
+class complex
+{
+public:
+	complex() : real(0), imag(0) {}
+
+	complex(double real_, double imag_)	: real(real), imag(imag) {}
+
+	double getreal()
+	{
+		return real;
+	}
+	void setreal(double real_)
+	{
+		real = real_;
+	}
+	double getimag()
+	{
+		return imag;
+	}
+	void setimag(double imag_)
+	{
+		imag = imag_;
+	}
+private:
+	double real;
+	double imag;
+};
+
+int main()
+{
+	int a(5);
+
+	complex c1;
+	complex c2 = complex(2,3);
+	complex c3(2, 3);
+
+	cout << "c1= " << c1.getreal() << "," << c1.getimag() << endl;
+	cout << "c2= " << c2.getreal() << "," << c2.getimag() << endl;
+	cout << "c3= " << c3.getreal() << "," << c3.getimag() << endl;
+
+}
+
+
+------------------------------------------------------------------
+
+
+ #include <iostream>
+using namespace std;
+
+class time
+{
+public:
+	time() :h(0), m(0), s(0) {}
+	time(int s_) :time()
+	{
+		s = s_;
+	}
+	time(int m_, int s_) :time(s_)
+	{
+		m = m_;
+	}
+	time(int h_, int m_, int s_) :time(m_, s_)
+	{
+		h = h_;
+	}
+	
+public:
+	int h;
+	int m;
+	int s;
+};
+
+int main()
+{
+	time t1;
+	time t2(5);
+	time t3(3, 16);
+	time t4(2, 42, 15);
+
+	cout << "t1: " << t1.h << ":" << t1.m << ":" << t1.s << endl;
+	cout << "t2: " << t2.h << ":" << t2.m << ":" << t2.s << endl;
+	cout << "t3: " << t3.h << ":" << t3.m << ":" << t3.s << endl;
+	cout << "t4: " << t4.h << ":" << t4.m << ":" << t4.s << endl;
+}
+
+
+------------------------------------------------------------------
+
+
+<58강>
 
 
