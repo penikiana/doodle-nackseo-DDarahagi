@@ -2,7 +2,8 @@
 * text=auto
 
 
-**49강**
+<49강>
+
 #include <iostream>
 #include <string>
 
@@ -63,7 +64,10 @@ int main()
 
 ---------------------------------------------
 
-**50강**
+
+
+
+<50강>
 
 #include <iostream>
 #include <string>
