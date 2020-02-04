@@ -1,2 +1,62 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+#include <iostream>
+#include <string>
+
+---------------------------------------------
+
+int main()
+{
+	std::cout << "잘있거라 세상이여" << 10 << 'c' << std::endl;
+}
+
+---------------------------------------------
+
+using namespace std;
+
+int main()
+{
+	cout << "닥치시오 우서" << endl;
+}
+
+---------------------------------------------
+
+using namespace std;
+
+int main()
+{
+	int a, b;
+	cin >> a >> b;
+
+	cout << a << "+" << b << "=" << a + b << endl;
+}
+
+---------------------------------------------
+
+using namespace std;
+
+int main()
+{
+	string str;
+
+	str = "누가 기침소리를 내었는가";
+	cout << str << endl;
+}
+
+---------------------------------------------
+
+using namespace std;
+
+int main()
+{
+	string name;
+
+	cout << "이름을 입력하세요: ";
+	cin >> name;
+
+	string message = "닥치시오" + name + "  ";
+	cout << message << endl;
+}
+
+---------------------------------------------
