@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+/*
 using namespace std;
 
 class item
@@ -85,3 +85,4 @@ int main()
 	println((string)i8);	//명시적 형변환
 	println((int)i8);		
 }
+*/

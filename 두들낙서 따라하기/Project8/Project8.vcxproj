@@ -142,7 +142,10 @@
     <ClCompile Include="66, 67, 68강.cpp" />
     <ClCompile Include="69, 70강.cpp" />
     <ClCompile Include="71, 72강.cpp" />
-    <ClCompile Include="73강.cpp" />
+    <ClCompile Include="73, 74강.cpp" />
+    <ClCompile Include="75강.cpp" />
+    <ClCompile Include="76강.cpp" />
+    <ClCompile Include="77강.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

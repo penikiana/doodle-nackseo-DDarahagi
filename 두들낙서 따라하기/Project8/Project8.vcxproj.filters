@@ -69,7 +69,16 @@
     <ClCompile Include="71, 72강.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="73강.cpp">
+    <ClCompile Include="73, 74강.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="75강.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="76강.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="77강.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
